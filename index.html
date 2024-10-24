@@ -66,7 +66,7 @@
     <script>
         // Optional: Add a fallback link in case the redirect doesn't work
         if (state && code) {
-            document.getElementById('fallback-link').href = `fitfms://redirect?state=${state}&code=${code}`;
+            document.getElementById('fallback-link').href = `fitfmc://redirect?state=${state}&code=${code}`;
         } else {
             document.getElementById('fallback-link').style.display = 'none'; // Hide the link if parameters are missing
         }

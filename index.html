@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // Extract the query parameters from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const state = urlParams.get('state');
+      const code = urlParams.get('code');
+
+      // Redirect to your app using your app's deep link scheme
+      window.location.href = `myapp://auth-callback?state=${state}&code=${code}`;
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>

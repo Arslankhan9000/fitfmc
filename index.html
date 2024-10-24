@@ -1,16 +1,76 @@
-<html>
-  <head>
-    <script type="text/javascript">
-      // Extract the query parameters from the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const state = urlParams.get('state');
-      const code = urlParams.get('code');
+<!DOCTYPE html>
+<html lang="en">
 
-      // Redirect to your app using your app's deep link scheme
-      window.location.href = `myapp://auth-callback?state=${state}&code=${code}`;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+        h1:hover {
+            color: #0056b3;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            // Extract the query parameters from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const state = urlParams.get('state');
+            const code = urlParams.get('code');
+
+            // Check if parameters are present
+            if (state && code) {
+                // Redirect to your app using your app's deep link scheme
+                window.location.href = `fitfms://redirect?state=${state}&code=${code}`;
+            } else {
+                // Display an error message if parameters are missing
+                document.body.innerHTML = `
+                <h1>Error: Missing Parameters</h1>
+                <br>
+                <p>Please ensure your URL contains the required parameters.</p>
+            `;
+            }
+        }
     </script>
-  </head>
-  <body>
-    <h1>Redirecting...</h1>
-  </body>
+</head>
+
+<body>
+    <div>
+        <h1>Redirecting...</h1>
+        <p>If you are not redirected automatically, <a href="#" id="fallback-link">click here</a>.</p>
+    </div>
+    <script>
+        // Optional: Add a fallback link in case the redirect doesn't work
+        if (state && code) {
+            document.getElementById('fallback-link').href = `fitfms://redirect?state=${state}&code=${code}`;
+        } else {
+            document.getElementById('fallback-link').style.display = 'none'; // Hide the link if parameters are missing
+        }
+    </script>
+</body>
+
 </html>

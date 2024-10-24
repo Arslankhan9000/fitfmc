@@ -21,7 +21,7 @@
         h1 {
             font-size: 2.5em;
             margin: 0;
-            color: red;
+            color: rgb(213, 114, 0);
             transition: color 0.3s ease;
         }
 
@@ -45,7 +45,7 @@
             // Check if parameters are present
             if (state && code) {
                 // Redirect to your app using your app's deep link scheme
-                window.location.href = `fitfms://redirect?state=${state}&code=${code}`;
+                window.location.href = `fitfmc://redirect?state=${state}&code=${code}`;
             } else {
                 // Display an error message if parameters are missing
                 document.body.innerHTML = `
